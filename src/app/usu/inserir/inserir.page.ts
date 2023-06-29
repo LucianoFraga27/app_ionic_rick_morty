@@ -23,7 +23,7 @@ export class InserirPage implements OnInit {
   insereUsuario(){
     this.autenticacaoService.insereNoFirebase(this.email, this.senha)
     .then((res) => {
-      this.router.navigate(['folder/'+this.email]);
+      this.router.navigate(['folder/api']);
     }).catch((error) => {
       this.mensagem = "Erro ao incluir usuario";
       this.exibeMensagem();

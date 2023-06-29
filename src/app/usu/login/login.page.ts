@@ -9,15 +9,11 @@ import { AutenticacaoService } from '../../usuario/autenticacao.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
-
+ 
   public email: string = "";
   public senha: string = "";
   public mensagem: string = "";
   public nome: string = "";
-
-  
-
 
   constructor( 
     public autenticacaoService:AutenticacaoService,
@@ -29,7 +25,7 @@ export class LoginPage implements OnInit {
       this.autenticacaoService.loginNoFirebase(this.email, this.senha)
       .then((res) => {
         this.nome = this.extrairNomeDoEmail(this.email);
-        this.router.navigate(['folder/'+this.nome]);
+        this.router.navigate(['folder/api']);
         this.mensagem ='Login Realizado!';
           this.exibeMensagem();
       }).catch((error) => {
@@ -45,7 +41,9 @@ export class LoginPage implements OnInit {
       });
       toast.present();
     }
-
+    limparLocalStorage() {
+      localStorage.clear();
+    }
   ngOnInit() {
   }
 

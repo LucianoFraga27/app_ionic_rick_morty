@@ -1,26 +1,95 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>{{ folder }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content [fullscreen]="true">
-
-  <div *ngIf="folder === 'api'">
-    API.</div>
-
-  <div *ngIf="folder === 'sobre-mim'">
+  <div *ngIf="folder !== 'api' && folder !== 'sobre-mim' && folder !== 'sair'">
+    <ion-header [translucent]="true">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>INICIAL PAGE</ion-title>
+      </ion-toolbar>
+      
+    </ion-header>
+  </div>
   
-    SOBRE MIM.
+  <div *ngIf="folder === 'api'">
+    <ion-header [translucent]="true">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Personagens</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+  <ion-refresher slot="fixed" (ionRefresh)="efeitoRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let character of lista_personagens" size="6">
+        <ion-card class="custom-card">
+          <ion-card-header>
+            <ion-card-title>{{ character.name }}</ion-card-title>
+          </ion-card-header>
+          <ion-img [src]="character.image"></ion-img>
+          <ion-card-content>
+            <!-- Conteúdo adicional do card -->
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-infinite-scroll (ionInfinite)="efeitoScrollInfinito($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  </div>
+  <div *ngIf="folder === 'sobre-mim'">
+    <ion-header [translucent]="true">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Sobre mim</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Luciano Lucas</ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content>
+          <ion-img src="\assets\eu.jpg"/>
+      </ion-card-content>
+
+
+    </ion-card>
   
   
   </div>
 
   <div *ngIf="folder === 'sair'">
-      <ion-button  routerLink="/login">Sair</ion-button>
+    
+    <ion-header [translucent]="true">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Sair</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    
+    <div class="confirmation-message">
+        <p>Deseja realmente sair?</p>
+      </div>
+      <div class="button-container">
+        <ion-button expand="full" color="danger" (click)='sair()'>Sair</ion-button>
+      </div>
+  
   </div>
   
 </ion-content>

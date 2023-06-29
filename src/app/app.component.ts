@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { register } from 'swiper/element/bundle';
+import {Router} from '@angular/router';
+import {Platform} from '@ionic/angular';
+register();
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -7,13 +12,21 @@ import { Component } from '@angular/core';
 export class AppComponent {
   
   public appPages = [
-    { title: 'API', url: '/folder/inbox', icon: 'mail' },
-    { title: 'Sobre mim', url: '/folder/outbox', icon: 'paper-plane' },
-    { title: 'Sair', url: '/folder/outbox', icon: 'paper-plane' },
+    { title: 'api', url: '/folder/inbox', icon: 'mail' },
+    { title: 'sobre-mim', url: '/folder/outbox', icon: 'paper-plane' },
+    { title: 'sair', url: '/folder/outbox', icon: 'aperture-outline' },
+  
   ];
 
-  constructor() {
-
-
+  constructor(private router:Router,
+    private platform: Platform ) {
+      this.initializeApp();
   }
+
+  initializeApp(){
+    this.platform.ready().then(() => {
+      this.router.navigateByUrl('splash');
+    });
+  }
+
 }

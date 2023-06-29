@@ -6,17 +6,28 @@
  
   <div class="login-wrapper">
       <div class="center">  
+        <div class="separar"> </div>
+
+      <div class="logo">
+        <ion-img src="\assets\app_logo.png"/>
+      </div>
+      
+      <ion-text color="primary">
+        <h1>Entrar</h1>
+      </ion-text>
+
             <ion-item>
-              
-              <ion-input type="text"  [(ngModel)]="email">email</ion-input>
+              <ion-label>Email</ion-label>
+              <ion-input type="text"  [(ngModel)]="email"></ion-input>
             </ion-item>
             <ion-item>
-        
-              <ion-input type="password"  [(ngModel)]="senha">senha</ion-input>
+              <ion-label>Senha</ion-label>
+              <ion-input type="password"  [(ngModel)]="senha"></ion-input>
             </ion-item>
             <div class="buttons">
               <ion-button expand="block" type="submit" color="tertiary"  (click)='loginUsuario()'>Login</ion-button>
               <ion-button expand="block"  color="secondary" routerLink="/inserir">Registrar</ion-button>
+              <ion-button expand="block"  color="danger" (click)="limparLocalStorage()" >Limpar Local Storage</ion-button>
             </div>
       </div>
   </div>

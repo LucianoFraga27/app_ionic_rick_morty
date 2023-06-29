@@ -1,0 +1,22 @@
+
+
+<ion-content [fullscreen]="true">
+  
+  <swiper-container [slidesPerView]="1" [loop]="true">
+    <swiper-slide><ion-img src="\assets\slide_1.png"/></swiper-slide>
+    <swiper-slide><ion-img src="\assets\slide_2.png"/></swiper-slide>
+    <swiper-slide><ion-img src="\assets\slide_3.png"/></swiper-slide>
+    <swiper-slide><ion-img src="\assets\slide_4.png"/></swiper-slide>
+  </swiper-container>
+
+</ion-content>
+
+<ion-footer>
+  
+  <ion-toolbar>
+    <ion-button expand="block" type="submit" color="tertiary" (click)="sair()">Sair</ion-button>
+    <ion-button expand="block"  color="secondary" (click)="naoExibirMais()" >Não exibir mais</ion-button>
+    
+  </ion-toolbar>
+
+</ion-footer>
